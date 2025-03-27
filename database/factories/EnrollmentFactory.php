@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\ClassModel;
+use App\Models\Customer;
+use App\Models\Enrollment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,6 +13,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class EnrollmentFactory extends Factory
 {
     /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Enrollment::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -17,7 +27,9 @@ class EnrollmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'cliente_id' => Customer::factory(),
+            'clase_id' => ClassModel::factory(),
+            'fecha_inscripcion' => fake()->dateTimeBetween('-3 months', 'now'),
         ];
     }
 }

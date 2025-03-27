@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('puesto');
+            $table->date('fecha_contratacion');
+            $table->string('email')->unique();
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->foreignId('branch_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }
