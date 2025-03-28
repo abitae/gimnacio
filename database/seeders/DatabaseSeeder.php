@@ -38,13 +38,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crear compañías y sucursales
-        $company = Company::factory()->create([
-            'name' => 'FitGym',
-            'address' => 'Av. Principal 123',
-            'phone' => '555-1234',
-            'email' => 'contacto@fitgym.com',
-            'website' => 'https://fitgym.com',
-        ]);
+        $company = Company::factory()->create(
+            [
+                'ruc' => '10436493903'
+            ]
+        );
 
         // Crear 3 sucursales para la compañía
         $branches = Branch::factory(3)->create([
